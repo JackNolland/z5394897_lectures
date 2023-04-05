@@ -1,0 +1,58 @@
+import math
+import datetime as dt
+import pandas as pd
+import config as cnf
+
+CSVLOC = os.path.join(cnf.DATADIR, 'tsla_prc.csv')
+
+def find_primes(n):
+    primes = []
+    for i in range(2, n+1):
+        is_prime = True
+        for j in range(2, int(math.sqrt(i))+1):
+            if i % j == 0:
+                is_prime = False
+                break
+        if is_prime:
+            primes.append(i)
+    return primes
+
+dt_now  = dt.datetime.now()
+print(dt_now)
+print(type(dt_now))
+
+s = 'Date in day/month/year format is: {}/{}/{} '.format(dt_now.day, dt_now.month, dt_now.year)
+print(s)
+
+print(dt_now)
+print(repr(dt_now))
+
+a_little_ago = dt.datetime(year=2021, month=8, day=21, hour=13, minute=27, second=1, microsecond=283311)
+print(a_little_ago)
+
+dt_other = dt.datetime(year=2021, month=8, day=21)
+print(dt_other)
+
+dt0 = dt.datetime(year=2019, month=12, day=31)
+dt1 = dt.datetime(year=2020, month=1, day=1)
+delta  = dt1 - dt0
+print(repr(delta))
+print(delta)
+
+t1 = dt.datetime(year=2020, month=12, day=31, hour=12)
+t2 = dt.datetime(year=2020, month=12, day=31, hour=0)
+new_delta  = t1 - t2
+print(new_delta)
+
+start = dt.datetime(year=2020, month=12, day=31, hour=0)
+delta = dt.timedelta(hours=12)
+end = start - delta
+print(start)
+print(end)
+
+date  = dt.datetime(year=2020, month=12, day=31, hour=0)
+s  = date.strftime('%Y-%m-%d')
+print(s)
+
+prc = pd.read_csv(CSVLOC)
+print(prc)
