@@ -1,0 +1,30 @@
+import os
+import config as cnf
+
+DATAFILE = os.path.join(cnf.DATADIR, 'qan_prc_2020.csv')
+NEWFILE = os.path.join(cnf.DATADIR, 'new_file.txt')
+
+def print_file_lines(pth):
+    with open(pth) as file:
+        for i, line in enumerate(file):
+            print(f"line {i}: {line}")
+
+with open(NEWFILE, mode='w') as file:
+    file.write('This is a line\n')
+    file.write('This is another line')
+
+print_file_lines(NEWFILE)
+
+def print_file_lines_no_whitespace(pth):
+    with open(pth) as file:
+        for i, line in enumerate(file):
+            print(f"line {i}: '{line.rstrip()}'")
+
+with open(NEWFILE, mode='w') as file:
+    file.write('This is a line\n')
+    file.write('This is another line')
+
+print_file_lines_no_whitespace(NEWFILE)
+
+def safe_open(pth, mode):
+    pass
